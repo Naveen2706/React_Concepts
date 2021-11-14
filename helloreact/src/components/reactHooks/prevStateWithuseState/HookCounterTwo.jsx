@@ -1,0 +1,27 @@
+import React,{useState} from 'react'
+
+function HookCounterTwo() {
+   const initialState = 0;
+    const [count, setCount] = useState(initialState)
+
+    const incrementFive = ()=>{
+        for(let i=0;i<5;i++) {
+            setCount(prevCount => prevCount + 1)        //instead of value of count we are passing prev value via arrow function
+        }
+    }
+    return (
+        <div>
+count:{count} 
+<button onClick={()=>setCount(initialState)}>Reset</button>
+<button onClick={()=>setCount(count+1)}>Increment</button>
+<button onClick={()=>setCount(prevCount=>prevCount+1)}>Increment</button>       {/*arrow function inside setCount, prevValue is supplies*/}
+
+<button onClick={()=>setCount(count-1)}>Decrement</button>      
+<button onClick={()=>setCount(prevCount=>prevCount-1)}>Decrement</button>  
+
+<button onClick={incrementFive}>Increment 5</button>     
+        </div>
+    )
+}
+
+export default HookCounterTwo
